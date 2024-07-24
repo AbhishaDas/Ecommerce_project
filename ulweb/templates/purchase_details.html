@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Details</title>
+</head>
+<body>
+    <h1>Purchase Details</h1>
+    <table>
+        <tr>
+            <th>Purchase ID</th>
+            <th>User</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Date</th>
+        </tr>
+        {% for purchase in purchases %}
+        <tr>
+            <td>{{ purchase.id }}</td>
+            <td>{{ purchase.user }}</td>
+            <td>{{ purchase.product }}</td>
+            <td>{{ purchase.quantity }}</td>
+            <td>{{ purchase.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
