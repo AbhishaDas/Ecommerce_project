@@ -31,13 +31,25 @@
     </script>
     <style>
         .btn {
-            background-color: #f7daa4; /* Change this to your desired background color */
+            background-color: #df9f57; /* Change this to your desired background color */
             color: #ffffff; /* Change this to your desired text color */
             }
 
         .btn:hover {
             background-color: #e2b97ad5; /* Change this to your desired hover background color */
             color: #ffffff; /* Change this to your desired hover text color */
+            }
+
+        .jumbotron-sale {
+            background-image: url('/static/images/midbanner.jpg');
+            background-size: cover;
+            color: white;
+            padding: 2rem;
+            height: 600px;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
             }
     </style>
 </head>
@@ -71,20 +83,15 @@
                     </div> <!-- col.// -->
                     <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
                         <div class="d-flex justify-content-end mb-3 mb-lg-0">
-                            <div class="widget-header">
-                                {% if user.is_authenticated %}
-                                    <small class="title text-muted">Welcome {{ user.username }}!</small>
-                                {% else %}
-                                    <small class="title text-muted">Welcome guest!</small>
-                                {% endif %}
-                                <div> 
-                                    <a href="{% url 'signup' %}">SignUp</a> <span class="dark-transp"> | </span>
-                                    <a href="{% url 'login' %}"> Login</a>
-                                </div>
-                            </div>
+                            <a href="{% url 'wishlist' %}" class="widget-header pl-3 ml-3">
+                                <div class="icon icon-sm rounded-circle border"><i class="fa fa-heart"></i></div>
+                            </a>
                             <a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
                                 <div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
                                 <span class="badge badge-pill badge-danger notify">0</span>
+                            </a>
+                            <a href="{% url 'profile' %}" class="widget-header pl-3 ml-3">
+                                <div class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></div>
                             </a>
                         </div> <!-- widgets-wrap.// -->
                     </div> <!-- col.// -->
