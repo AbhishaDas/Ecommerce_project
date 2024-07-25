@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 # Create your views here.
 def home(request):
@@ -13,8 +13,19 @@ def wishlist(request):
 def cart(request):
     return render(request, 'cart.html')
 
-def profile(request):
+def account(request):
+    return render(request, 'account.html')
+
+
+def profile(request):   
     return render(request, 'profile.html')
+
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def orders(request):
+    return render(request, 'orders.html')
 
 def product_detail(request):
     return render(request, 'product-detail.html')

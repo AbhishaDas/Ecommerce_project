@@ -29,9 +29,10 @@
     <script type="text/javascript">
     /// some script
     </script>
+    {% block extra_css %}
     <style>
         .btn {
-            background-color: #df9f57; /* Change this to your desired background color */
+            background-color: #a1664b; /* Change this to your desired background color */
             color: #ffffff; /* Change this to your desired text color */
             }
 
@@ -51,7 +52,9 @@
             align-items: center;
             text-align: center;
             }
+
     </style>
+    {% endblock extra_css %}
 </head>
 <body>
     <header class="section-header">
@@ -90,9 +93,10 @@
                                 <div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
                                 <span class="badge badge-pill badge-danger notify">0</span>
                             </a>
-                            <a href="{% url 'profile' %}" class="widget-header pl-3 ml-3">
+                            <a href="{% url 'account' %}" class="widget-header pl-3 ml-3">
                                 <div class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></div>
                             </a>
+                            
                         </div> <!-- widgets-wrap.// -->
                     </div> <!-- col.// -->
                 </div> <!-- row.// -->
