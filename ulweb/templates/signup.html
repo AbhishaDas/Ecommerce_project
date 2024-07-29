@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
+    <title>Login Page</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .vh-100 {
@@ -24,39 +24,33 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background: #fff;
         }
-        .form-control {
-            background-color: #f9f9f9; /* Lighter color */
-            border-radius: 8px; /* Rounded corners */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow */
-            border: 1px solid #ddd; /* Border color */
-        }
-        .form-control::placeholder {
-            color: #888; /* Placeholder text color */
-        }
-        .form-control:focus {
-            border-color: #007bff; /* Border color on focus */
-            box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Shadow on focus */
-        }
     </style>
 </head>
 <body>
     <div class="container vh-100 d-flex align-items-center justify-content-center">
         <div class="row justify-content-center w-100">
-            <div class="col-md-6 img-container d-none d-md-flex">
-                <img src="{% static 'images/signup.png' %}" class="img-fluid" alt="Signup image">
+            <div class="col-md-6 d-none d-md-block">
+                <img src="{% static 'images/signup.png' %}"
+                     class="img-fluid" alt="Phone image">
             </div>
             <div class="col-md-6 d-flex align-items-center justify-content-center">
                 <div class="form-container">
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form method="POST" action="">
                         {% csrf_token %}
+                        {% if error %}
+                            <div class="alert alert-danger" role="alert">{{ error }}</div>
+                        {% endif %}
                         <div class="form-group">
-                            <input type="text" id="firstname" name="firstname" placeholder="First Name" class="form-control" required>
+                            <input type="text" placeholder="First Name" name="firstname" id="firstname" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <input type="text" id="lastname" name="lastname" placeholder="Last Name" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <input type="email" id="email" name="email" placeholder="Email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="phone" name="phone" placeholder="Phone number" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <input type="text" id="username" name="username" placeholder="Username" class="form-control" required>
@@ -78,3 +72,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+

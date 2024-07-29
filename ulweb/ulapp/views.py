@@ -1,4 +1,9 @@
+from urllib import request
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from accounts.models import UserInfo
+
 
 # Create your views here.
 def home(request):
@@ -17,7 +22,21 @@ def account(request):
     return render(request, 'account.html')
 
 
-def profile(request):   
+@login_required
+def profile(request):
+    if 'user_id' in request.session:
+        query = request.GET.get('q')
+        if query:
+            user_details = UserInfo.objects.filter(
+                firstname__icontains=query) | UserInfo.objects.filter(
+                lastname__icontains=query) | UserInfo.objects.filter(
+                email__icontains=query) | UserInfo.objects.filter(
+                username__icontains=query)
+        else:
+            return render(request, 'profile.html', {'error':'invalid username or password'})
+    else:
+        return redirect('login')
+        
     return render(request, 'profile.html')
 
 

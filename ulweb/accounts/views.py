@@ -70,9 +70,6 @@ def user_dashboard(request):
         
     return render(request, 'user_dashboard.html', {'users': user_details})
 
-def product_dashboard(request):
-    return render(request, 'product_dashboard.html')
-
 def purchase_details(request):
     return render(request, 'purchase_details.html')
 
