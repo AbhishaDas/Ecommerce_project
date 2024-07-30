@@ -1,11 +1,17 @@
-from urllib import request
-from django.shortcuts import redirect, render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from .forms import UserInfoUpdateForm
 from accounts.models import UserInfo
 
 
-# Create your views here.
+
+
+def profile(request):
+    
+    return render(request, 'profile.html')
+
+
 def home(request):
     return render(request, 'home.html')
 
@@ -22,24 +28,6 @@ def account(request):
     return render(request, 'account.html')
 
 
-@login_required
-def profile(request):
-    if 'user_id' in request.session:
-        query = request.GET.get('q')
-        if query:
-            user_details = UserInfo.objects.filter(
-                firstname__icontains=query) | UserInfo.objects.filter(
-                lastname__icontains=query) | UserInfo.objects.filter(
-                email__icontains=query) | UserInfo.objects.filter(
-                username__icontains=query)
-        else:
-            return render(request, 'profile.html', {'error':'invalid username or password'})
-    else:
-        return redirect('login')
-        
-    return render(request, 'profile.html')
-
-
 def contact(request):
     return render(request, 'contact.html')
 
@@ -48,3 +36,6 @@ def orders(request):
 
 def product_detail(request):
     return render(request, 'product-detail.html')
+
+def user_update_form(request):
+    return render(request, 'user_update_form.html')
