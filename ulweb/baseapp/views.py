@@ -1,15 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+
+from accounts.forms import UserForm
 from .forms import UserInfoUpdateForm
 from accounts.models import UserInfo
 
-
-
-
+@login_required
 def profile(request):
-    
-    return render(request, 'profile.html')
+    if request.POST:
+        form = UserInfoUpdateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = UserInfoUpdateForm()
+    return render(request, 'profile.html',{'form':form})
 
 
 def home(request):

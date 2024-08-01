@@ -38,9 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ulapp',
     'accounts',
     'products',
+    'baseapp',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +73,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ulweb.wsgi.application'
 
+
+LOGIN_URL = 'user_login'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

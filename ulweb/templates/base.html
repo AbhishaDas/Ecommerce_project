@@ -74,7 +74,7 @@
                     <a href="{% url 'store' %}" class="btn ">Store</a>
                     <div class="col-lg col-md-6 col-sm-12 col">
                         <form action="#" class="search">
-                            <div class="input-group w-100">
+                            <div class="input-group w-60">
                                 <input type="text" class="form-control" style="width:60%;" placeholder="Search">
                                 <div class="input-group-append">
                                     <button class="btn" type="submit">
@@ -85,22 +85,21 @@
                         </form> <!-- search-wrap .end// -->
                     </div> <!-- col.// -->
                     <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
-                        <div class="d-flex justify-content-end mb-3 mb-lg-0">
-                            <a href="{% url 'signup' %}" class="widget-header pl-3 ml-3">
-                                <div class="">signup/login</div>
+                        <div class="d-flex justify-content-end align-items-center">
+                            <a href="{% url 'signup' %}" class="btn mr-2">
+                                <i class="fa"></i> Sign Up
                             </a>
-                            <a href="{% url 'wishlist' %}" class="widget-header pl-3 ml-3">
+                            <a href="{% url 'wishlist' %}" class="widget-header mr-2">
                                 <div class="icon icon-sm rounded-circle border"><i class="fa fa-heart"></i></div>
                             </a>
-                            <a href="{% url 'cart' %}" class="widget-header pl-3 ml-3">
+                            <a href="{% url 'cart' %}" class="widget-header mr-2">
                                 <div class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></div>
                                 <span class="badge badge-pill badge-danger notify">0</span>
                             </a>
-                            <a href="{% url 'account' %}" class="widget-header pl-3 ml-3">
+                            <a href="{% url 'account' %}" class="widget-header">
                                 <div class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></div>
                             </a>
-                            
-                        </div> <!-- widgets-wrap.// -->
+                        </div>
                     </div> <!-- col.// -->
                 </div> <!-- row.// -->
             </div> <!-- container.// -->

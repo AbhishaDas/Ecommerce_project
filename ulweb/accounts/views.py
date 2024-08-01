@@ -13,14 +13,14 @@ def signup(request):
         frm = UserForm(request.POST)
         if frm.is_valid():
             frm.save()
-            return redirect('login')
+            return redirect('user_login')
     else:
         frm = UserForm()
         
     return render(request, 'signup.html', {'frm': frm})
 
 
-def login_user(request):
+def user_login(request):
     if 'user_id' in request.session:
         return redirect('home')
     if request.POST:
@@ -35,8 +35,16 @@ def login_user(request):
                 error_message = 'Invalid Username or Password'
         except UserInfo.DoesNotExist:
                 error_message = 'Invalid Username or Password'
-        return render(request, 'login.html',  {'error': error_message})
-    return render(request, 'login.html') 
+        return render(request, 'user_login.html',  {'error': error_message})
+    return render(request, 'user_login.html') 
+
+
+def logout_user(request):
+    try:
+        del request.session['user_id']
+    except KeyError:
+        pass
+    return redirect('user_login')
 
 
 admin_username = 'admin'
@@ -70,9 +78,6 @@ def user_dashboard(request):
         
     return render(request, 'user_dashboard.html', {'users': user_details})
 
-def purchase_details(request):
-    return render(request, 'purchase_details.html')
-
 def manage_user(request, user_id):
     user = get_object_or_404(UserInfo, pk=user_id)
     if request.POST:
@@ -88,6 +93,10 @@ def manage_user(request, user_id):
         frm = EditUserForm(instance=user)
     
     return render(request, 'manage_user.html', {'frm': frm, 'user': user})
+
+
+def purchase_details(request):
+    return render(request, 'purchase_details.html')
 
 
 

@@ -8,10 +8,9 @@
 {% block content %}
 <form method="post">
     {% csrf_token %}
-    {{ frm.as_p }}
-    <button type="submit" name="save" class="btn btn-primary">Save</button>
-    <button type="submit" name="delete" class="btn btn-danger">Delete</button>
-    <a href="{% url 'user_update_form' %}" class="btn btn-secondary">Cancel</a> <!-- Updated to a valid link -->
+    {{ form.as_p }}
+    <button type="submit" name="edit" class="btn">Edit</button>
+    <button type="submit" name="save" class="btn">Save</button>
 </form>
 {% endblock content %}
 

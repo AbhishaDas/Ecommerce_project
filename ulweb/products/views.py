@@ -33,3 +33,6 @@ def delete_product(request, product_id):
         product.delete()
         return redirect('product_dashboard')
     return render(request, 'delete_product.html', {'product': product})
+
+
+
