@@ -1,8 +1,7 @@
 from django import forms
-from django.forms import ModelForm
 from accounts.models import UserInfo
 
-class UserInfoUpdateForm(ModelForm):
+class UserInfoUpdateForm(forms.ModelForm):
     class Meta:
         model = UserInfo
-        fields = ['firstname','lastname','username','phone','email']
+        fields = ['first_name', 'last_name', 'email', 'phone']

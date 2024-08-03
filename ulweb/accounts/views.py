@@ -2,9 +2,6 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.hashers import check_password
 from .forms import UserForm, EditUserForm
 from .models import UserInfo
-from django.utils.decorators import decorator_from_middleware
-
-
 
 def signup(request):
     if 'user_id' in request.session:
@@ -85,11 +82,12 @@ def manage_user(request, user_id):
             frm = EditUserForm(request.POST, instance=user)
             if frm.is_valid():
                 frm.save()
-                return redirect('admin_home')
+                return redirect('user_dashboard')
         elif 'delete' in request.POST:
             user.delete()
-            return redirect('admin_home')
+            return redirect('user_dashboard')
     else:
+        
         frm = EditUserForm(instance=user)
     
     return render(request, 'manage_user.html', {'frm': frm, 'user': user})

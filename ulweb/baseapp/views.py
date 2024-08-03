@@ -6,16 +6,35 @@ from accounts.forms import UserForm
 from .forms import UserInfoUpdateForm
 from accounts.models import UserInfo
 
-@login_required
+
+# def profile(request):
+#      user_info = get_object_or_404(UserInfo, username=request.user.username)
+#      if request.method == 'POST':
+#         form = UserInfoUpdateForm(request.POST, instance=user_info)
+#         if form.is_valid():
+#             form.save()
+#             messages.success(request, 'Your profile has been updated successfully.')
+#             return redirect('profile')
+#      else:
+#         form = UserInfoUpdateForm(instance=user_info)
+    
+#      return render(request, 'profile.html', {'form': form})
+ 
 def profile(request):
-    if request.POST:
-        form = UserInfoUpdateForm(request.POST)
+    if 'user_id' not in request.session:
+        return redirect('user_login')
+    
+    user_info = get_object_or_404(UserInfo, pk=request.session['user_id'])
+    
+    if request.method == 'POST':
+        form = UserInfoUpdateForm(request.POST, instance=user_info)
         if form.is_valid():
             form.save()
             return redirect('profile')
     else:
-        form = UserInfoUpdateForm()
-    return render(request, 'profile.html',{'form':form})
+        form = UserInfoUpdateForm(instance=user_info)
+    
+    return render(request, 'profile.html', {'form': form})
 
 
 def home(request):
